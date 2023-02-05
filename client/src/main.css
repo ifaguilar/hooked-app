@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+p {
+  @apply text-black/80 dark:text-white/80 max-w-prose;
+}
+
+.icon {
+  filter: brightness(0);
+}
+
+.icon-white,
+.dark .icon {
+  filter: brightness(0) invert(1);
+}
+
+.active > span {
+  @apply text-red-600;
+}
+
+.active > .icon,
+.dark .active > .icon {
+  filter: unset;
+}
+
+.swiper {
+  @apply w-full max-w-full px-0 md:px-16 !important;
+}
+
+.swiper-wrapper {
+  @apply pt-2 pb-12;
+}
+
+.swiper-slide {
+  @apply flex flex-grow h-auto max-w-[242px] !important;
+}
+
+.swiper-button-next {
+  @apply hidden md:flex right-0 !important;
+}
+
+.swiper-button-prev {
+  @apply hidden md:flex left-0 !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  @apply text-red-600 bg-white dark:bg-neutral-900 top-0 w-12 m-0 h-full !important;
+}
+
+.swiper-pagination-bullet {
+  @apply bg-neutral-900 dark:bg-white !important;
+}
+
+.swiper-pagination-bullet-active {
+  @apply bg-red-600 dark:bg-red-600 !important;
+}
+
+.video {
+  max-width: none !important;
+}
