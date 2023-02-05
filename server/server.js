@@ -12,10 +12,17 @@ dotenv.config();
 
 const PORT = process.env.PORT || 3000;
 const app = express();
+const corsOptions = {
+  origin: process.env.CLIENT_BASE_URL,
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  allowedHeaders: ["Content-Type"],
+  exposedHeaders: ["Content-Type"],
+};
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 
 // Routes
 app.use("/api/genre", genreRouter);
