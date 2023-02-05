@@ -1,6 +1,8 @@
+import { serverBaseURL } from "../constants/constants";
+
 export const trendingMovies = async () => {
   try {
-    const response = await fetch("http://localhost:3000/api/trending/");
+    const response = await fetch(`${serverBaseURL}/api/trending/`);
 
     return response.json();
   } catch (error) {

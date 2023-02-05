@@ -1,3 +1,5 @@
+import { serverBaseURL } from "../constants/constants";
+
 export const moviesByGenre = async ({ params }) => {
   const genreName = params.genreName;
   const genres = JSON.parse(localStorage.getItem("genres"));
@@ -10,7 +12,7 @@ export const moviesByGenre = async ({ params }) => {
 
   try {
     const response = await fetch(
-      `http://localhost:3000/api/discover/movie/genre/${genreId}`
+      `${serverBaseURL}/api/discover/movie/genre/${genreId}`
     );
 
     const data = await response.json();

@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 // Components
 import MenuHeading from "./MenuHeading";
+import MenuItem from "./MenuItem";
 import Separator from "./Separator";
 
 // Constants
@@ -10,7 +11,6 @@ import { categories, categoryIcons, genreIcons } from "../constants/constants";
 
 // Helpers
 import { getIconURL } from "../helpers/getIconURL";
-import MenuItem from "./MenuItem";
 
 const Sidebar = ({ genres, isOpen, setSidebarOpen }) => {
   return (

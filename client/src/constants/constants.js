@@ -1,3 +1,5 @@
+export const serverBaseURL = import.meta.env.VITE_SERVER_BASE_URL;
+
 export const youtubeBaseURL = "https://www.youtube.com/embed/";
 
 export const placeholderImageLight = "https://fakeimg.pl/500x500/f3f3f3/f3f3f3";
