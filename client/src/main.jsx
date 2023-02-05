@@ -24,56 +24,61 @@ import MoviePage from "./pages/Movie";
 import SigninPage from "./pages/Signin";
 import SignupPage from "./pages/Signup";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <App />,
+      loader: movieGenres,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          path: "/",
+          element: <HomePage />,
+          loader: popularMovies,
+        },
+        {
+          path: "/top-rated",
+          element: <HomePage />,
+          loader: topRatedMovies,
+        },
+        {
+          path: "/upcoming",
+          element: <HomePage />,
+          loader: upcomingMovies,
+        },
+        {
+          path: "/search",
+          element: <SearchPage />,
+          loader: trendingMovies,
+        },
+        {
+          path: "/movie/:movieId",
+          element: <MoviePage />,
+          loader: movieDetails,
+        },
+        {
+          path: "/genre/:genreName",
+          element: <HomePage />,
+          loader: moviesByGenre,
+        },
+      ],
+    },
+    {
+      path: "/signin",
+      element: <SigninPage />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/signup",
+      element: <SignupPage />,
+      errorElement: <ErrorPage />,
+    },
+  ],
   {
-    path: "/",
-    element: <App />,
-    loader: movieGenres,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "/",
-        element: <HomePage />,
-        loader: popularMovies,
-      },
-      {
-        path: "/top-rated",
-        element: <HomePage />,
-        loader: topRatedMovies,
-      },
-      {
-        path: "/upcoming",
-        element: <HomePage />,
-        loader: upcomingMovies,
-      },
-      {
-        path: "/search",
-        element: <SearchPage />,
-        loader: trendingMovies,
-      },
-      {
-        path: "/movie/:movieId",
-        element: <MoviePage />,
-        loader: movieDetails,
-      },
-      {
-        path: "/genre/:genreName",
-        element: <HomePage />,
-        loader: moviesByGenre,
-      },
-    ],
-  },
-  {
-    path: "/signin",
-    element: <SigninPage />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/signup",
-    element: <SignupPage />,
-    errorElement: <ErrorPage />,
-  },
-]);
+    basename: import.meta.env.BASE_URL,
+  }
+);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
