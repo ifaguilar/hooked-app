@@ -2,7 +2,7 @@ import {
   placeholderImageLight,
   placeholderImageDark,
   imagesBaseURL,
-} from "../constants/constants";
+} from "../constants/constants.js";
 
 export const getImageURL = (size, path) => {
   return `${imagesBaseURL}/${size}/${path}`;
