@@ -8,7 +8,7 @@ import Rating from "./Rating";
 import { ThemeContext } from "../context/ThemeContext";
 
 // Helpers
-import { getImageURL, getPlaceholderURL } from "../helpers/getImageUrl";
+import { getImageURL, getPlaceholderURL } from "../helpers/getImageURL";
 
 const MovieCard = ({ movie }) => {
   const { theme } = useContext(ThemeContext);
