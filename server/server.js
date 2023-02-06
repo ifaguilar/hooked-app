@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000;
 
 const corsOptions = {
   origin: [
-    "http://localhost:5000",
+    "http://localhost:5173",
     "http://hooked-app.onrender.com",
     "https://hooked-app.onrender.com",
   ],
@@ -26,8 +26,6 @@ const app = express();
 // Middleware
 app.use(cors(corsOptions));
 app.use(express.json());
-
-app.options("*", cors());
 
 // Routes
 app.use("/api/genre", genreRouter);
