@@ -11,15 +11,21 @@ import searchRouter from "./src/routes/search.js";
 dotenv.config();
 
 const PORT = process.env.PORT || 3000;
-const app = express();
+
 const corsOptions = {
-  origin: process.env.CLIENT_BASE_URL,
+  origin: [
+    "http://localhost:5000",
+    "http://hooked-app.onrender.com",
+    "https://hooked-app.onrender.com",
+  ],
+  credentials: true,
 };
 
+const app = express();
+
 // Middleware
-app.use(express.json());
 app.use(cors(corsOptions));
-app.options("*", cors());
+app.use(express.json());
 
 // Routes
 app.use("/api/genre", genreRouter);
