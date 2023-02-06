@@ -7,8 +7,7 @@ export const getMovieList = async (req, res) => {
     const endpoint = "/genre/movie/list";
 
     const response = await fetch(
-      `${process.env.TMDB_BASE_URL}${endpoint}?api_key=${process.env.TMDB_API_KEY}`,
-      { mode: "cors" }
+      `${process.env.TMDB_BASE_URL}${endpoint}?api_key=${process.env.TMDB_API_KEY}`
     );
 
     const data = await response.json();
