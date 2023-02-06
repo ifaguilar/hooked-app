@@ -14,13 +14,12 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 const corsOptions = {
   origin: process.env.CLIENT_BASE_URL,
-  credentials: true,
-  optionsSuccessStatus: 200,
 };
 
 // Middleware
 app.use(express.json());
 app.use(cors(corsOptions));
+app.options("*", cors());
 
 // Routes
 app.use("/api/genre", genreRouter);
