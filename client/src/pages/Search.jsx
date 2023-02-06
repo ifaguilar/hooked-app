@@ -8,6 +8,9 @@ import MovieGrid from "../components/MovieGrid";
 import SearchBox from "../components/SearchBox";
 import Spinner from "../components/Spinner";
 
+// Constants
+import { serverBaseURL } from "../constants/constants";
+
 const Search = () => {
   const { movies } = useLoaderData();
 
@@ -21,7 +24,7 @@ const Search = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:3000/api/search/", {
+      const response = await fetch(`${serverBaseURL}/api/search/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

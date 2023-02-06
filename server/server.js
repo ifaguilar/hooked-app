@@ -15,9 +15,7 @@ const app = express();
 const corsOptions = {
   origin: process.env.CLIENT_BASE_URL,
   credentials: true,
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-  allowedHeaders: ["Content-Type"],
-  exposedHeaders: ["Content-Type"],
+  optionsSuccessStatus: 200,
 };
 
 // Middleware
