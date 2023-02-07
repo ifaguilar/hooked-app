@@ -15,15 +15,9 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 // Middleware
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", process.env.CLIENT_BASE_URL);
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
 app.use(express.json());
+app.use(cors());
+app.options("*", cors());
 
 // Routes
 app.use("/api/genre", genreRouter);
