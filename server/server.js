@@ -12,19 +12,17 @@ dotenv.config();
 
 const PORT = process.env.PORT || 3000;
 
-const corsOptions = {
-  origin: [
-    "http://localhost:5173",
-    "http://hooked-app.onrender.com",
-    "https://hooked-app.onrender.com",
-  ],
-  credentials: true,
-};
-
 const app = express();
 
 // Middleware
-app.use(cors(corsOptions));
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", process.env.CLIENT_BASE_URL);
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 app.use(express.json());
 
 // Routes
