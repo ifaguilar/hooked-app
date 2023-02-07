@@ -29,7 +29,7 @@ p {
 }
 
 .swiper-wrapper {
-  @apply pt-2 pb-12;
+  @apply pt-2 pb-16;
 }
 
 .swiper-slide {

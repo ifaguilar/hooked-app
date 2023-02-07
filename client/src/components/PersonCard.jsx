@@ -20,6 +20,7 @@ const PersonCard = ({ person }) => {
               : getPlaceholderURL(theme)
           }
           alt={person.name}
+          loading="lazy"
         />
       </div>
       <div className="flex flex-col gap-2 p-4">

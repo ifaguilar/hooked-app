@@ -48,6 +48,7 @@ const Movie = () => {
               <Swiper
                 modules={[Navigation, Pagination]}
                 pagination={{
+                  clickable: true,
                   dynamicBullets: true,
                 }}
                 navigation
@@ -89,6 +90,7 @@ const Movie = () => {
               <Swiper
                 modules={[Navigation, Pagination]}
                 pagination={{
+                  clickable: true,
                   dynamicBullets: true,
                 }}
                 navigation
@@ -124,6 +126,7 @@ const Movie = () => {
               <Swiper
                 modules={[Navigation, Pagination]}
                 pagination={{
+                  clickable: true,
                   dynamicBullets: true,
                 }}
                 navigation
