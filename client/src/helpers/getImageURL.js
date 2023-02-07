@@ -9,5 +9,9 @@ export const getImageURL = (size, path) => {
 };
 
 export const getPlaceholderURL = (theme) => {
-  return theme === "light" ? placeholderImageLight : placeholderImageDark;
+  if (theme === "light") {
+    return placeholderImageLight;
+  } else {
+    return placeholderImageDark;
+  }
 };
