@@ -25,15 +25,23 @@ const MovieHero = ({ movie, director }) => {
   const [movieGenres, setMovieGenres] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const backgroundRef = useCallback((node) => {
-    if (node !== null) {
-      node.style.backgroundImage = `url(${
-        movie.backdrop_path
-          ? getImageURL("original", movie.backdrop_path)
-          : getPlaceholderURL(theme)
-      })`;
-    }
-  }, []);
+  const backgroundRef = useCallback(
+    (node) => {
+      if (node !== null) {
+        {
+          movie.backdrop_path
+            ? (node.style.backgroundImage = `url(${getImageURL(
+                "original",
+                movie.backdrop_path
+              )}`)
+            : theme === "light"
+            ? (node.style.backgroundColor = "#f3f3f3")
+            : (node.style.backgroundColor = "#171717");
+        }
+      }
+    },
+    [theme]
+  );
 
   useEffect(() => {
     let preloaderImage = document.createElement("img");
@@ -76,16 +84,16 @@ const MovieHero = ({ movie, director }) => {
       </div>
       <div className="relative w-full h-full container mx-auto px-4 lg:px-8 py-32">
         <div className="flex flex-col gap-12 lg:grid lg:gap-24 lg:grid-cols-[1fr_2fr] lg:items-center">
-          <div className="h-auto">
-            <img
-              className="aspect-[2/3] w-2/3 md:w-1/2 lg:w-full mx-auto lg:mx-0 h-auto xl:h-full lg:h-auto object-cover rounded-2xl shadow-md"
-              src={
-                movie.poster_path
-                  ? getImageURL("w500", movie.poster_path)
-                  : getPlaceholderURL(theme)
-              }
-              alt={movie.title}
-            />
+          <div className="rounded-2xl overflow-hidden shadow-md">
+            {movie.poster_path ? (
+              <img
+                className="aspect-[2/3] w-2/3 md:w-1/2 lg:w-full mx-auto lg:mx-0 h-auto xl:h-full object-cover"
+                src={getImageURL("w500", movie.poster_path)}
+                alt={movie.title}
+              />
+            ) : (
+              <div className="aspect-[2/3] w-2/3 md:w-1/2 lg:w-full mx-auto lg:mx-0 h-auto xl:h-full bg-[#f3f3f3] dark:bg-[#232323]"></div>
+            )}
           </div>
           <div className="flex flex-col gap-12">
             <div className="flex flex-col gap-4 text-center lg:text-left">
