@@ -46,9 +46,7 @@ const MovieHero = ({ movie, director }) => {
   useEffect(() => {
     let preloaderImage = document.createElement("img");
 
-    preloaderImage.src = movie.backdrop_path
-      ? getImageURL("original", movie.backdrop_path)
-      : getPlaceholderURL(theme);
+    preloaderImage.src = getImageURL("original", movie.backdrop_path);
 
     preloaderImage.addEventListener("load", (event) => {
       setIsLoading(false);
