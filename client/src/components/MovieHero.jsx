@@ -82,10 +82,10 @@ const MovieHero = ({ movie, director }) => {
       </div>
       <div className="relative w-full h-full container mx-auto px-4 lg:px-8 py-32">
         <div className="flex flex-col gap-12 lg:grid lg:gap-24 lg:grid-cols-[1fr_2fr] lg:items-center">
-          <div className="rounded-2xl overflow-hidden shadow-md">
+          <div className="aspect-[2/3] w-2/3 md:w-1/2 lg:w-full h-auto xl:h-full mx-auto lg:mx-0 rounded-2xl overflow-hidden shadow-md">
             {movie.poster_path ? (
               <img
-                className="aspect-[2/3] w-2/3 md:w-1/2 lg:w-full mx-auto lg:mx-0 h-auto xl:h-full object-cover"
+                className="object-cover"
                 src={getImageURL("w500", movie.poster_path)}
                 alt={movie.title}
               />

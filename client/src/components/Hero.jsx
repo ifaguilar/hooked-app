@@ -71,7 +71,7 @@ const Hero = ({ movie }) => {
     >
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-white dark:from-neutral-900"></div>
       <div className="relative w-full h-full container mx-auto px-4 lg:px-8">
-        <div className="absolute bottom-32 flex flex-col gap-12 max-w-prose">
+        <div className="absolute left-0 right-0 bottom-32 flex flex-col gap-12 max-w-prose px-4 lg:px-8">
           <Heading size="lg">{movie.title}</Heading>
           <div className="flex gap-4 items-center">
             <Rating
