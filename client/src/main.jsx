@@ -29,6 +29,7 @@ const router = createBrowserRouter(
     {
       path: "/",
       element: <App />,
+      id: "app",
       loader: movieGenres,
       errorElement: <ErrorPage />,
       children: [

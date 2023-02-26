@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
+import { useRouteLoaderData } from "react-router-dom";
 
 // Components
 import Button from "./Button";
@@ -10,7 +11,7 @@ import Rating from "./Rating";
 import { ThemeContext } from "../context/ThemeContext";
 
 // Helpers
-import { getImageURL, getPlaceholderURL } from "../helpers/getImageURL";
+import { getImageURL } from "../helpers/getImageURL";
 import { getIconURL } from "../helpers/getIconURL";
 
 // Utils
@@ -19,9 +20,8 @@ import { toHoursAndMinutes, getFullDate } from "../utils/DateTime";
 const MovieHero = ({ movie, director }) => {
   const { theme } = useContext(ThemeContext);
 
-  const [genres, setGenres] = useState(
-    JSON.parse(localStorage.getItem("genres"))
-  );
+  const genres = useRouteLoaderData("app").genres;
+
   const [movieGenres, setMovieGenres] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 

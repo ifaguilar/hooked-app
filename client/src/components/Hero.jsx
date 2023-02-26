@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { Link, useRouteLoaderData } from "react-router-dom";
 
 // Components
 import Button from "./Button";
@@ -19,28 +19,33 @@ import { truncateString } from "../utils/truncateString";
 const Hero = ({ movie }) => {
   const { theme } = useContext(ThemeContext);
 
-  const [genres, setGenres] = useState(
-    JSON.parse(localStorage.getItem("genres"))
-  );
+  const genres = useRouteLoaderData("app").genres;
+
   const [movieGenres, setMovieGenres] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const backgroundRef = useCallback((node) => {
-    if (node !== null) {
-      node.style.backgroundImage = `url(${
-        movie.backdrop_path
-          ? getImageURL("original", movie.backdrop_path)
-          : getPlaceholderURL(theme)
-      })`;
-    }
-  }, []);
+  const backgroundRef = useCallback(
+    (node) => {
+      if (node !== null) {
+        {
+          movie.backdrop_path
+            ? (node.style.backgroundImage = `url(${getImageURL(
+                "original",
+                movie.backdrop_path
+              )}`)
+            : theme === "light"
+            ? (node.style.backgroundColor = "#f3f3f3")
+            : (node.style.backgroundColor = "#171717");
+        }
+      }
+    },
+    [theme]
+  );
 
   useEffect(() => {
     let preloaderImage = document.createElement("img");
 
-    preloaderImage.src = movie.backdrop_path
-      ? getImageURL("original", movie.backdrop_path)
-      : getPlaceholderURL(theme);
+    preloaderImage.src = getImageURL("original", movie.backdrop_path);
 
     preloaderImage.addEventListener("load", (event) => {
       setIsLoading(false);
