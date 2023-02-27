@@ -1,8 +1,8 @@
 import { serverBaseURL } from "../constants/constants";
 
-export const popularMovies = async () => {
+export const popularMovies = async (page = 1) => {
   try {
-    const response = await fetch(`${serverBaseURL}/api/movie/`);
+    const response = await fetch(`${serverBaseURL}/api/movie/?page=${page}`);
 
     const data = await response.json();
     const movies = data.movies;

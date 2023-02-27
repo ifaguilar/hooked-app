@@ -5,11 +5,12 @@ dotenv.config();
 
 export const movieDiscoverByGenre = async (req, res) => {
   try {
+    const page = req.query.page;
     const genreId = req.params.genreId;
     const endpoint = `/discover/movie/`;
 
     const response = await fetch(
-      `${process.env.TMDB_BASE_URL}${endpoint}?api_key=${process.env.TMDB_API_KEY}&with_genres=${genreId}`
+      `${process.env.TMDB_BASE_URL}${endpoint}?api_key=${process.env.TMDB_API_KEY}&with_genres=${genreId}&page=${page}`
     );
 
     const data = await response.json();

@@ -4,6 +4,7 @@ import {
   useLoaderData,
   ScrollRestoration,
   useNavigation,
+  useLocation,
 } from "react-router-dom";
 
 // Components
@@ -30,6 +31,7 @@ const App = () => {
   const [themeIcon, setThemeIcon] = useState();
 
   const overlayRef = useRef();
+  let location = useLocation();
 
   useEffect(() => {
     switch (theme) {
@@ -95,7 +97,7 @@ const App = () => {
           isOpen={sidebarOpen}
           setSidebarOpen={setSidebarOpen}
         />
-        <Outlet />
+        <Outlet key={location.key} />
         <Footer />
         <ScrollRestoration />
       </div>

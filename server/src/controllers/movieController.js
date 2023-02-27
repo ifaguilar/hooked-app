@@ -5,10 +5,11 @@ dotenv.config();
 
 export const getPopular = async (req, res) => {
   try {
+    const page = req.query.page;
     const endpoint = "/movie/popular";
 
     const response = await fetch(
-      `${process.env.TMDB_BASE_URL}${endpoint}?api_key=${process.env.TMDB_API_KEY}`
+      `${process.env.TMDB_BASE_URL}${endpoint}?api_key=${process.env.TMDB_API_KEY}&page=${page}`
     );
 
     const data = await response.json();
@@ -38,10 +39,11 @@ export const getPopular = async (req, res) => {
 
 export const getTopRated = async (req, res) => {
   try {
+    const page = req.query.page;
     const endpoint = "/movie/top_rated";
 
     const response = await fetch(
-      `${process.env.TMDB_BASE_URL}${endpoint}?api_key=${process.env.TMDB_API_KEY}`
+      `${process.env.TMDB_BASE_URL}${endpoint}?api_key=${process.env.TMDB_API_KEY}&page=${page}`
     );
 
     const data = await response.json();
@@ -71,10 +73,11 @@ export const getTopRated = async (req, res) => {
 
 export const getUpcoming = async (req, res) => {
   try {
+    const page = req.query.page;
     const endpoint = "/movie/upcoming";
 
     const response = await fetch(
-      `${process.env.TMDB_BASE_URL}${endpoint}?api_key=${process.env.TMDB_API_KEY}`
+      `${process.env.TMDB_BASE_URL}${endpoint}?api_key=${process.env.TMDB_API_KEY}&page=${page}`
     );
 
     const data = await response.json();
