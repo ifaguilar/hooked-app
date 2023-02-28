@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, useCallback } from "react";
 import { useRouteLoaderData } from "react-router-dom";
 
 // Components
-import Button from "./Button";
+import RoundedButton from "./RoundedButton";
 import Heading from "./Heading";
 import Pill from "./Pill";
 import Rating from "./Rating";
@@ -81,17 +81,19 @@ const MovieHero = ({ movie, director }) => {
         <div className="backdrop-blur-md absolute inset-0 bg-gradient-to-t from-white dark:from-neutral-900"></div>
       </div>
       <div className="relative w-full h-full container mx-auto px-4 lg:px-8 py-32">
-        <div className="flex flex-col gap-12 lg:grid lg:gap-24 lg:grid-cols-[1fr_2fr] lg:items-center">
-          <div className="aspect-[2/3] w-2/3 md:w-1/2 lg:w-full h-auto xl:h-full mx-auto lg:mx-0 rounded-2xl overflow-hidden shadow-md">
-            {movie.poster_path ? (
-              <img
-                className="object-cover"
-                src={getImageURL("w500", movie.poster_path)}
-                alt={movie.title}
-              />
-            ) : (
-              <div className="aspect-[2/3] w-2/3 md:w-1/2 lg:w-full mx-auto lg:mx-0 h-auto xl:h-full bg-[#f3f3f3] dark:bg-[#232323]"></div>
-            )}
+        <div className="flex flex-col gap-12 lg:grid lg:gap-24 lg:grid-cols-[1fr_2fr] lg:items-start">
+          <div>
+            <div className="aspect-[2/3] w-2/3 md:w-1/2 lg:w-full mx-auto lg:mx-0 rounded-2xl overflow-hidden shadow-md">
+              {movie.poster_path ? (
+                <img
+                  className="object-cover"
+                  src={getImageURL("w500", movie.poster_path)}
+                  alt={movie.title}
+                />
+              ) : (
+                <div className="w-full h-full bg-[#f3f3f3] dark:bg-[#232323]"></div>
+              )}
+            </div>
           </div>
           <div className="flex flex-col gap-12">
             <div className="flex flex-col gap-4 text-center lg:text-left">
@@ -109,22 +111,20 @@ const MovieHero = ({ movie, director }) => {
                 <span className="font-semibold">User Score</span>
               </div>
               <div className="flex gap-4 items-center justify-center lg:justify-start">
-                <Button variant="primary">
+                <RoundedButton hasShadow={true}>
                   <img
-                    className="icon icon-white"
+                    className="icon"
                     src={getIconURL("hearts")}
-                    alt="Favorite"
+                    alt="Add to favorite list"
                   />
-                  Add to Favorites
-                </Button>
-                <Button variant="secondary">
+                </RoundedButton>
+                <RoundedButton hasShadow={true}>
                   <img
                     className="icon"
                     src={getIconURL("add--v1")}
-                    alt="Watchlist"
+                    alt="Add to watchlist"
                   />
-                  Add to Watchlist
-                </Button>
+                </RoundedButton>
               </div>
             </div>
             <div className="flex flex-col gap-4">

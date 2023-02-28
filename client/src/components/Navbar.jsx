@@ -32,10 +32,9 @@ const Navbar = ({
   const { theme, setTheme } = useContext(ThemeContext);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between px-4 py-2 shadow-md bg-white dark:bg-neutral-900">
+    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between px-4 py-[6px] shadow-md bg-white dark:bg-neutral-900">
       <div className="flex items-center gap-4">
         <RoundedButton
-          variant="secondary"
           onClick={() => {
             closeAllMenus();
             setSidebarOpen(!isSidebarOpen);
@@ -47,14 +46,13 @@ const Navbar = ({
       </div>
       <div className="flex items-center gap-4">
         <Link to="/search" onClick={closeAllMenus}>
-          <RoundedButton variant="secondary">
+          <RoundedButton>
             <img className="icon" src={getIconURL("search")} alt="Search" />
           </RoundedButton>
         </Link>
         <div className="hidden lg:flex lg:items-center lg:gap-4">
           <div className="relative">
             <RoundedButton
-              variant="secondary"
               onClick={() => {
                 closeAllMenus();
                 setThemeOpen(!isThemeOpen);
@@ -88,7 +86,6 @@ const Navbar = ({
         </div>
         <div className="relative lg:hidden">
           <RoundedButton
-            variant="secondary"
             onClick={() => {
               closeAllMenus();
               setMenuOpen(!isMenuOpen);

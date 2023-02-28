@@ -3,16 +3,26 @@
 @tailwind utilities;
 
 p {
-  @apply text-black/80 dark:text-white/80 max-w-prose;
+  @apply text-neutral-900/80 dark:text-white/80 max-w-prose;
 }
 
 .icon {
   filter: brightness(0);
+  opacity: 0.8;
+}
+
+.search .icon {
+  opacity: 0.33;
+}
+
+.dark .search .icon {
+  opacity: 0.4;
 }
 
 .icon-white,
 .dark .icon {
   filter: brightness(0) invert(1);
+  opacity: 0.73;
 }
 
 .active > span {
@@ -22,6 +32,7 @@ p {
 .active > .icon,
 .dark .active > .icon {
   filter: unset;
+  opacity: 1;
 }
 
 .swiper {
