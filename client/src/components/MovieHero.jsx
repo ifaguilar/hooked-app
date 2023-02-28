@@ -86,7 +86,7 @@ const MovieHero = ({ movie, director }) => {
             <div className="aspect-[2/3] w-2/3 md:w-1/2 lg:w-full mx-auto lg:mx-0 rounded-2xl overflow-hidden shadow-md">
               {movie.poster_path ? (
                 <img
-                  className="object-cover"
+                  className="w-full h-full object-cover"
                   src={getImageURL("w500", movie.poster_path)}
                   alt={movie.title}
                 />

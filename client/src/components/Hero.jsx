@@ -11,7 +11,7 @@ import Rating from "./Rating";
 import { ThemeContext } from "../context/ThemeContext";
 
 // Helpers
-import { getImageURL, getPlaceholderURL } from "../helpers/getImageURL";
+import { getImageURL } from "../helpers/getImageURL";
 
 // Utils
 import { truncateString } from "../utils/truncateString";
