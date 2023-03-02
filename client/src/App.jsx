@@ -34,6 +34,31 @@ const App = () => {
   let location = useLocation();
 
   useEffect(() => {
+    localStorage.setItem("genres", JSON.stringify(genres));
+  }, []);
+
+  useEffect(() => {
+    darkModePreference.addEventListener("change", () =>
+      setThemeIcon(toggleDarkMode())
+    );
+
+    return () => {
+      darkModePreference.removeEventListener(
+        "change",
+        setThemeIcon(toggleDarkMode())
+      );
+    };
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("click", handleOverlay);
+
+    return () => {
+      document.removeEventListener("click", handleOverlay);
+    };
+  }, []);
+
+  useEffect(() => {
     switch (theme) {
       case "light":
         localStorage.setItem("theme", "light");
@@ -47,16 +72,6 @@ const App = () => {
     }
     setThemeIcon(toggleDarkMode());
   }, [theme]);
-
-  useEffect(() => {
-    localStorage.setItem("genres", JSON.stringify(genres));
-
-    darkModePreference.addEventListener("change", () =>
-      setThemeIcon(toggleDarkMode())
-    );
-
-    document.addEventListener("click", handleOverlay);
-  }, []);
 
   const handleOverlay = (event) => {
     const isClickInside = overlayRef.current.contains(event.target);

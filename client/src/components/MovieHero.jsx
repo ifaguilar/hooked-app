@@ -53,7 +53,7 @@ const MovieHero = ({ movie, director }) => {
       preloaderImage = null;
     });
 
-    return removeEventListener("load", preloaderImage);
+    return () => removeEventListener("load", preloaderImage);
   }, []);
 
   useEffect(() => {

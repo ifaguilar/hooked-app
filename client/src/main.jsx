@@ -21,7 +21,7 @@ import ErrorPage from "./pages/Error";
 import HomePage from "./pages/Home";
 import SearchPage from "./pages/Search";
 import MoviePage from "./pages/Movie";
-import SigninPage from "./pages/Signin";
+import LoginPage from "./pages/Login";
 import SignupPage from "./pages/Signup";
 
 const router = createBrowserRouter(
@@ -66,8 +66,8 @@ const router = createBrowserRouter(
       ],
     },
     {
-      path: "/signin",
-      element: <SigninPage />,
+      path: "/login",
+      element: <LoginPage />,
       errorElement: <ErrorPage />,
     },
     {

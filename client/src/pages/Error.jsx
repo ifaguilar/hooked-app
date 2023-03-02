@@ -29,6 +29,10 @@ const Error = () => {
 
   useEffect(() => {
     darkModePreference.addEventListener("change", toggleDarkMode);
+
+    return () => {
+      darkModePreference.removeEventListener("change", toggleDarkMode);
+    };
   }, []);
 
   return (

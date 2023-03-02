@@ -80,7 +80,7 @@ const Navbar = ({
               ))}
             </Dropdown>
           </div>
-          <Link to="/signin">
+          <Link to="/login">
             <Button variant="primary">Sign In</Button>
           </Link>
         </div>
@@ -94,7 +94,7 @@ const Navbar = ({
             <img className="icon" src={getIconURL("menu-2--v1")} alt="Menu" />
           </RoundedButton>
           <Dropdown isOpen={isMenuOpen}>
-            <Link to="/signin" className="flex flex-col px-4">
+            <Link to="/login" className="flex flex-col px-4">
               <Button variant="primary">Sign In</Button>
             </Link>
             <Separator />

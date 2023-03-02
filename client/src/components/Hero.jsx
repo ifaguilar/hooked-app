@@ -52,7 +52,7 @@ const Hero = ({ movie }) => {
       preloaderImage = null;
     });
 
-    return removeEventListener("load", preloaderImage);
+    return () => removeEventListener("load", preloaderImage);
   }, []);
 
   useEffect(() => {

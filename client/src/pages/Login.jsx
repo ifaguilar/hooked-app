@@ -6,7 +6,7 @@ import { ThemeContext } from "../context/ThemeContext";
 // Helpers
 import { darkModePreference, toggleDarkMode } from "../helpers/darkMode";
 
-const Signin = () => {
+const Login = () => {
   const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
@@ -26,6 +26,10 @@ const Signin = () => {
 
   useEffect(() => {
     darkModePreference.addEventListener("change", toggleDarkMode);
+
+    return () => {
+      darkModePreference.removeEventListener("change", toggleDarkMode);
+    };
   }, []);
 
   return (
@@ -38,4 +42,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Login;
