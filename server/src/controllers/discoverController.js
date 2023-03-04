@@ -15,25 +15,29 @@ export const movieDiscoverByGenre = async (req, res) => {
 
     const data = await response.json();
 
-    if (data.status_code) {
-      if (data.status_code === 7) {
-        res.status(401).json({
-          success: false,
-          message: data.status_message,
-        });
-      } else {
-        res.status(404).json({
-          success: false,
-          message: data.status_message,
-        });
-      }
-    } else {
-      res.status(200).json({
-        success: true,
-        movies: data.results,
+    if (data.status_code === 7) {
+      return res.status(401).json({
+        ok: false,
+        message: data.status_message,
       });
     }
+
+    if (data.status_code === 34) {
+      return res.status(404).json({
+        ok: false,
+        message: data.status_message,
+      });
+    }
+
+    return res.status(200).json({
+      ok: true,
+      movies: data.results,
+    });
   } catch (error) {
-    console.error({ message: error.message });
+    console.error(error.message);
+    return res.status(500).json({
+      ok: false,
+      message: "Something went wrong. Please try again later.",
+    });
   }
 };

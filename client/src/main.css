@@ -63,3 +63,7 @@ p {
 .video {
   max-width: none !important;
 }
+
+::-ms-reveal {
+  filter: invert(100%);
+}

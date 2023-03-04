@@ -6,6 +6,7 @@ import {
   useNavigation,
   useLocation,
 } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 // Components
 import Spinner from "./components/Spinner";
@@ -88,35 +89,34 @@ const App = () => {
   };
 
   return (
-    <>
-      <div className="relative min-h-screen font-medium text-neutral-900 dark:text-white bg-white dark:bg-neutral-900">
-        {navigation.state === "loading" && <Spinner position="fixed" />}
-        <div
-          ref={overlayRef}
-          className={`${
-            sidebarOpen || themeOpen || menuOpen ? "block" : "hidden"
-          } absolute top-0 bottom-0 left-0 right-0 z-40`}
-        ></div>
-        <Navbar
-          isSidebarOpen={sidebarOpen}
-          setSidebarOpen={setSidebarOpen}
-          isThemeOpen={themeOpen}
-          setThemeOpen={setThemeOpen}
-          themeIcon={themeIcon}
-          isMenuOpen={menuOpen}
-          setMenuOpen={setMenuOpen}
-          closeAllMenus={closeAllMenus}
-        />
-        <Sidebar
-          genres={genres}
-          isOpen={sidebarOpen}
-          setSidebarOpen={setSidebarOpen}
-        />
-        <Outlet key={location.key} />
-        <Footer />
-        <ScrollRestoration />
-      </div>
-    </>
+    <div className="relative min-h-screen font-medium text-neutral-900 dark:text-white bg-white dark:bg-neutral-900">
+      {navigation.state === "loading" && <Spinner position="fixed" />}
+      <div
+        ref={overlayRef}
+        className={`${
+          sidebarOpen || themeOpen || menuOpen ? "block" : "hidden"
+        } absolute top-0 bottom-0 left-0 right-0 z-40`}
+      ></div>
+      <Navbar
+        isSidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+        isThemeOpen={themeOpen}
+        setThemeOpen={setThemeOpen}
+        themeIcon={themeIcon}
+        isMenuOpen={menuOpen}
+        setMenuOpen={setMenuOpen}
+        closeAllMenus={closeAllMenus}
+      />
+      <Sidebar
+        genres={genres}
+        isOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+      />
+      <Outlet key={location.key} />
+      <Footer />
+      <ScrollRestoration />
+      <ToastContainer />
+    </div>
   );
 };
 
