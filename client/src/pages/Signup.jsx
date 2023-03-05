@@ -91,7 +91,7 @@ const Signup = () => {
             validationSchema={signupSchema}
             onSubmit={handleSubmit}
           >
-            {(props) => (
+            {({ isSubmitting }) => (
               <Form className="flex flex-col gap-8 w-full max-w-sm">
                 <div className="flex flex-col gap-2">
                   <label htmlFor="name" className="text-white/80">
@@ -185,7 +185,7 @@ const Signup = () => {
                   </ErrorMessage>
                 </div>
 
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" disabled={isSubmitting}>
                   Create account
                 </Button>
               </Form>

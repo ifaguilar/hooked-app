@@ -1,6 +1,12 @@
 import React from "react";
 
-const Button = ({ variant, children, onClick, type = "button" }) => (
+const Button = ({
+  variant,
+  children,
+  onClick,
+  type = "button",
+  disabled = false,
+}) => (
   <button
     className={`${
       variant === "primary"
@@ -9,6 +15,7 @@ const Button = ({ variant, children, onClick, type = "button" }) => (
     }  drop-shadow uppercase text-sm inline-flex gap-2 items-center justify-center rounded-md font-semibold px-6 py-[14px]`}
     type={type}
     onClick={onClick}
+    disabled={disabled}
   >
     {children}
   </button>
