@@ -87,7 +87,7 @@ const Navbar = ({
           <div className="relative">
             <RoundedButton
               onClick={() => handleClick("menu")}
-              icon="hearts"
+              icon="user"
               alt="Menu"
             />
 

@@ -48,6 +48,7 @@ export const validate = (req, res, next) => {
     return next();
   }
 
-  console.error({ errors: errors.array() });
-  return res.status(422).json({ errors: errors.array() });
+  errors
+    .array()
+    .forEach((error) => res.status(400).json({ message: error.msg }));
 };

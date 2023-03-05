@@ -71,3 +71,7 @@ label {
 ::-ms-reveal {
   filter: invert(100%);
 }
+
+.Toastify__close-button > svg {
+  @apply text-neutral-900 dark:text-white;
+}

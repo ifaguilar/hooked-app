@@ -71,7 +71,8 @@ const Login = () => {
       console.error(error.message);
       toast.error(error.message, {
         position: "bottom-right",
-        theme: theme === "dark" ? "dark" : "light",
+        className:
+          "text-neutral-900 dark:text-white bg-white dark:bg-neutral-800",
       });
     }
   };
@@ -87,7 +88,9 @@ const Login = () => {
   return (
     <div className="relative min-h-screen font-medium text-neutral-900 dark:text-white bg-white dark:bg-neutral-900">
       <div className="absolute inset-0 lg:grid lg:grid-cols-2">
-        <div className="hidden lg:block bg-[url('/website-perspective.png')] bg-cover bg-no-repeat bg-center opacity-50"></div>
+        <div className="relative hidden lg:block bg-[url('/website-perspective.png')] bg-cover bg-no-repeat bg-center">
+          <div className="absolute inset-0 bg-neutral-900 opacity-50"></div>
+        </div>
         <div className="flex flex-col items-center justify-center gap-16 h-full px-4 lg:px-8">
           <Logo />
           <Formik

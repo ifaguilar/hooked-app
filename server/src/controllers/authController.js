@@ -15,7 +15,7 @@ export const login = async (req, res) => {
     if (!user) {
       return res
         .status(401)
-        .json({ ok: false, message: "Invalid email address or password." });
+        .json({ ok: false, message: "Invalid email or password." });
     }
 
     // Verify password
@@ -24,7 +24,7 @@ export const login = async (req, res) => {
     if (!isMatch) {
       return res
         .status(401)
-        .json({ ok: false, message: "Invalid email address or password." });
+        .json({ ok: false, message: "Invalid email or password." });
     }
 
     // Create JWT token
@@ -50,7 +50,7 @@ export const signup = async (req, res) => {
     if (userExists) {
       return res
         .status(409)
-        .json({ ok: false, message: "Email address is already in use." });
+        .json({ ok: false, message: "Email is already in use." });
     }
 
     // Hash password
