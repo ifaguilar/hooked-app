@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 import App from "./App";
 import "./main.css";
 
 // Context
-import { ThemeContextProvider } from "./context/ThemeContext";
+import { ThemeProvider } from "./context/ThemeContext";
+import { AuthProvider } from "./context/AuthContext";
 
 // Loaders
 import { movieGenres } from "./loaders/movieGenres";
@@ -23,6 +28,8 @@ import SearchPage from "./pages/Search";
 import MoviePage from "./pages/Movie";
 import LoginPage from "./pages/Login";
 import SignupPage from "./pages/Signup";
+import FavoritesPage from "./pages/Favorites";
+import WatchlistPage from "./pages/Watchlist";
 
 const router = createBrowserRouter(
   [
@@ -54,6 +61,14 @@ const router = createBrowserRouter(
           loader: trendingMovies,
         },
         {
+          path: "/favorites",
+          element: <FavoritesPage />,
+        },
+        {
+          path: "/watchlist",
+          element: <WatchlistPage />,
+        },
+        {
           path: "/movie/:movieId",
           element: <MoviePage />,
           loader: movieDetails,
@@ -83,8 +98,10 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ThemeContextProvider>
-      <RouterProvider router={router} />
-    </ThemeContextProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );

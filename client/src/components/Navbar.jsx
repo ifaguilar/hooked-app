@@ -15,9 +15,7 @@ import { themeOptions } from "../constants/constants";
 
 // Context
 import { ThemeContext } from "../context/ThemeContext";
-
-// Helpers
-import { getIconURL } from "../helpers/getIconURL";
+import { AuthContext } from "../context/AuthContext";
 
 const Navbar = ({
   isSidebarOpen,
@@ -30,86 +28,142 @@ const Navbar = ({
   closeAllMenus,
 }) => {
   const { theme, setTheme } = useContext(ThemeContext);
+  const { isAuthenticated, logout } = useContext(AuthContext);
+
+  const handleClick = (menuName = null) => {
+    closeAllMenus();
+
+    switch (menuName) {
+      case "sidebar":
+        setSidebarOpen(!isSidebarOpen);
+        break;
+      case "theme":
+        setThemeOpen(!isThemeOpen);
+        break;
+      case "menu":
+        setMenuOpen(!isMenuOpen);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const themeDropdown = () => {
+    return (
+      <Dropdown isOpen={isThemeOpen}>
+        <MenuHeading>Change Theme</MenuHeading>
+
+        {themeOptions.map((option) => (
+          <MenuItem
+            key={option.name}
+            icon={option.icon}
+            text={option.name}
+            isActive={theme === option.name.toLowerCase()}
+            onClick={() => setTheme(option.name.toLowerCase())}
+          />
+        ))}
+      </Dropdown>
+    );
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between px-4 py-[6px] shadow-md bg-white dark:bg-neutral-900">
       <div className="flex items-center gap-4">
         <RoundedButton
-          onClick={() => {
-            closeAllMenus();
-            setSidebarOpen(!isSidebarOpen);
-          }}
-        >
-          <img className="icon" src={getIconURL("menu--v1")} alt="Sidebar" />
-        </RoundedButton>
-        <Logo onClick={closeAllMenus} />
+          onClick={() => handleClick("sidebar")}
+          icon="menu--v1"
+          alt="Sidebar"
+        />
+
+        <Logo onClick={handleClick} />
       </div>
+
       <div className="flex items-center gap-4">
-        <Link to="/search" onClick={closeAllMenus}>
-          <RoundedButton>
-            <img className="icon" src={getIconURL("search")} alt="Search" />
-          </RoundedButton>
+        <Link to="/search" onClick={handleClick}>
+          <RoundedButton icon="search" alt="Search" />
         </Link>
-        <div className="hidden lg:flex lg:items-center lg:gap-4">
+
+        {isAuthenticated ? (
           <div className="relative">
             <RoundedButton
-              onClick={() => {
-                closeAllMenus();
-                setThemeOpen(!isThemeOpen);
-              }}
-            >
-              {themeIcon === "dark" ? (
-                <img
-                  className="icon"
-                  src={getIconURL("crescent-moon")}
-                  alt="Dark"
-                />
-              ) : (
-                <img className="icon" src={getIconURL("sun")} alt="Light" />
-              )}
-            </RoundedButton>
-            <Dropdown isOpen={isThemeOpen}>
-              {themeOptions.map((option) => (
-                <MenuItem
-                  key={option.name}
-                  text={option.name}
-                  icon={getIconURL(option.icon)}
-                  isActive={theme === option.name.toLowerCase()}
-                  onClick={() => setTheme(option.name.toLowerCase())}
-                />
-              ))}
-            </Dropdown>
-          </div>
-          <Link to="/login">
-            <Button variant="primary">Sign In</Button>
-          </Link>
-        </div>
-        <div className="relative lg:hidden">
-          <RoundedButton
-            onClick={() => {
-              closeAllMenus();
-              setMenuOpen(!isMenuOpen);
-            }}
-          >
-            <img className="icon" src={getIconURL("menu-2--v1")} alt="Menu" />
-          </RoundedButton>
-          <Dropdown isOpen={isMenuOpen}>
-            <Link to="/login" className="flex flex-col px-4">
-              <Button variant="primary">Sign In</Button>
-            </Link>
-            <Separator />
-            <MenuHeading>Change theme</MenuHeading>
-            {themeOptions.map((option) => (
+              onClick={() => handleClick("menu")}
+              icon="hearts"
+              alt="Menu"
+            />
+
+            <Dropdown isOpen={isMenuOpen}>
+              <Link to="/favorites">
+                <MenuItem icon={"hearts"} text="Favorites" />
+              </Link>
+              <Link to="/watchlist">
+                <MenuItem icon={"bookmark-ribbon--v1"} text="Watchlist" />
+              </Link>
+
+              <Separator />
+
               <MenuItem
-                key={option.name}
-                text={option.name}
-                icon={getIconURL(option.icon)}
-                isActive={theme === option.name.toLowerCase()}
-                onClick={() => setTheme(option.name.toLowerCase())}
+                icon={themeIcon === "dark" ? "crescent-moon" : "sun"}
+                text="Change Theme"
+                onClick={() => handleClick("theme")}
               />
-            ))}
-          </Dropdown>
-        </div>
+
+              <Separator />
+
+              <MenuItem
+                icon={"exit"}
+                text="Log out"
+                onClick={() => {
+                  handleClick();
+                  logout();
+                }}
+              />
+            </Dropdown>
+
+            {themeDropdown()}
+          </div>
+        ) : (
+          <>
+            <div className="hidden lg:flex lg:items-center lg:gap-4">
+              <div className="relative">
+                <RoundedButton
+                  onClick={() => handleClick("theme")}
+                  icon={themeIcon === "dark" ? "crescent-moon" : "sun"}
+                  alt={themeIcon === "dark" ? "Dark" : "Light"}
+                />
+
+                {themeDropdown()}
+              </div>
+
+              <Link to="/login">
+                <Button variant="primary">Sign In</Button>
+              </Link>
+            </div>
+
+            <div className="relative lg:hidden">
+              <RoundedButton
+                onClick={() => handleClick("menu")}
+                icon="menu-2--v1"
+                alt="Menu"
+              />
+
+              <Dropdown isOpen={isMenuOpen}>
+                <Link to="/login" className="flex flex-col px-4">
+                  <Button variant="primary">Sign In</Button>
+                </Link>
+
+                <Separator />
+
+                <MenuItem
+                  icon={themeIcon === "dark" ? "crescent-moon" : "sun"}
+                  text="Change Theme"
+                  onClick={() => handleClick("theme")}
+                />
+              </Dropdown>
+
+              {themeDropdown()}
+            </div>
+          </>
+        )}
       </div>
     </nav>
   );

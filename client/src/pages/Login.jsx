@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -14,6 +14,7 @@ import { serverBaseURL } from "../constants/constants";
 
 // Context
 import { ThemeContext } from "../context/ThemeContext";
+import { AuthContext } from "../context/AuthContext";
 
 // Helpers
 import { darkModePreference, toggleDarkMode } from "../helpers/darkMode";
@@ -21,6 +22,7 @@ import { loginSchema } from "../helpers/validationSchema";
 
 const Login = () => {
   const { theme } = useContext(ThemeContext);
+  const { isAuthenticated, login } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -60,7 +62,7 @@ const Login = () => {
       const data = await response.json();
 
       if (data.ok) {
-        localStorage.setItem("token", data.token);
+        login(data.token);
         navigate("/");
       } else {
         throw new Error(data.message);
@@ -72,6 +74,14 @@ const Login = () => {
       });
     }
   };
+
+  if (isAuthenticated) {
+    return (
+      <div className="relative min-h-screen font-medium text-neutral-900 dark:text-white bg-white dark:bg-neutral-900">
+        <Navigate to="/" />
+      </div>
+    );
+  }
 
   return (
     <div className="relative min-h-screen font-medium text-neutral-900 dark:text-white bg-white dark:bg-neutral-900">
@@ -87,9 +97,7 @@ const Login = () => {
             {(props) => (
               <Form className="flex flex-col gap-8 w-full max-w-sm">
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="email" className="text-white/80">
-                    Email
-                  </label>
+                  <label htmlFor="email">Email</label>
 
                   <Field name="email">
                     {({ field, meta }) => (
@@ -110,9 +118,7 @@ const Login = () => {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="password" className="text-white/80">
-                    Password
-                  </label>
+                  <label htmlFor="password">Password</label>
 
                   <Field name="password">
                     {({ field, meta }) => (

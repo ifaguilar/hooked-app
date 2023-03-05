@@ -72,13 +72,15 @@ const Home = () => {
             ))}
           </MovieGrid>
           {currentPage <= lastPage ? (
-            <div className="flex justify-center items-center">
-              <Button
-                variant="primary"
-                onClick={() => setCurrentPage(currentPage + 1)}
-              >
-                Load more
-              </Button>
+            <div className="flex justify-center">
+              <div className="flex flex-col w-full max-w-lg">
+                <Button
+                  variant="primary"
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                >
+                  Show more
+                </Button>
+              </div>
             </div>
           ) : null}
         </div>

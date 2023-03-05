@@ -73,7 +73,7 @@ const MovieHero = ({ movie, director }) => {
   return (
     <div className="relative min-h-screen mt-[60px]">
       <div
-        className={`absolute top-0 left-0 w-full h-[90vh] bg-fixed bg-cover bg-no-repeat bg-center transition ${
+        className={`absolute inset-0 h-[85vh] bg-fixed bg-cover bg-no-repeat bg-center transition ${
           isLoading ? "opacity-0" : "opacity-100"
         }`}
         ref={backgroundRef}
@@ -111,20 +111,16 @@ const MovieHero = ({ movie, director }) => {
                 <span className="font-semibold">User Score</span>
               </div>
               <div className="flex gap-4 items-center justify-center lg:justify-start">
-                <RoundedButton hasShadow={true}>
-                  <img
-                    className="icon"
-                    src={getIconURL("hearts")}
-                    alt="Add to favorite list"
-                  />
-                </RoundedButton>
-                <RoundedButton hasShadow={true}>
-                  <img
-                    className="icon"
-                    src={getIconURL("add--v1")}
-                    alt="Add to watchlist"
-                  />
-                </RoundedButton>
+                <RoundedButton
+                  icon="hearts"
+                  alt="Add to favorites"
+                  hasShadow={true}
+                />
+                <RoundedButton
+                  icon="bookmark-ribbon--v1"
+                  alt="Add to watchlist"
+                  hasShadow={true}
+                />
               </div>
             </div>
             <div className="flex flex-col gap-4">

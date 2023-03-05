@@ -6,6 +6,10 @@ p {
   @apply text-neutral-900/80 dark:text-white/80 max-w-prose;
 }
 
+label {
+  @apply font-semibold text-sm uppercase text-neutral-900/60 dark:text-white/60;
+}
+
 .icon {
   filter: brightness(0);
   opacity: 0.91;

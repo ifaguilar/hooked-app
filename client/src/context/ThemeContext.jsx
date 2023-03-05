@@ -1,18 +1,15 @@
 import React, { useState, createContext } from "react";
 
-export const ThemeContext = createContext(null);
+export const ThemeContext = createContext();
 
-export const ThemeContextProvider = ({ children }) => {
+export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "system"
   );
 
-  const value = {
-    theme,
-    setTheme,
-  };
-
   return (
-    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
   );
 };

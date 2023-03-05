@@ -9,9 +9,6 @@ import Separator from "./Separator";
 // Constants
 import { categories, categoryIcons, genreIcons } from "../constants/constants";
 
-// Helpers
-import { getIconURL } from "../helpers/getIconURL";
-
 const Sidebar = ({ genres, isOpen, setSidebarOpen }) => {
   return (
     <div
@@ -33,7 +30,7 @@ const Sidebar = ({ genres, isOpen, setSidebarOpen }) => {
             {({ isActive }) => (
               <MenuItem
                 text={category.name}
-                icon={getIconURL(categoryIcons[categoryName])}
+                icon={categoryIcons[categoryName]}
                 isActive={isActive}
               />
             )}
@@ -56,8 +53,8 @@ const Sidebar = ({ genres, isOpen, setSidebarOpen }) => {
           >
             {({ isActive }) => (
               <MenuItem
+                icon={genreIcons[genreName]}
                 text={genre.name}
-                icon={getIconURL(genreIcons[genreName])}
                 isActive={isActive}
               />
             )}

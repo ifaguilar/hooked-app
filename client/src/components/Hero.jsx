@@ -68,15 +68,17 @@ const Hero = ({ movie }) => {
   };
 
   return (
-    <div
-      className={`relative h-[90vh] mt-[60px] bg-fixed bg-cover bg-no-repeat bg-center transition ${
-        isLoading ? "opacity-0" : "opacity-100"
-      }`}
-      ref={backgroundRef}
-    >
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-white dark:from-neutral-900"></div>
-      <div className="relative w-full h-full container mx-auto px-4 lg:px-8">
-        <div className="absolute left-0 right-0 bottom-32 flex flex-col gap-12 max-w-prose px-4 lg:px-8">
+    <div className="relative min-h-screen mt-[60px]">
+      <div
+        className={`absolute inset-0 h-[85vh] bg-fixed bg-cover bg-no-repeat bg-center transition ${
+          isLoading ? "opacity-0" : "opacity-100"
+        }`}
+        ref={backgroundRef}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-neutral-900"></div>
+      </div>
+      <div className="absolute inset-0 h-[90vh] flex items-end container mx-auto px-4 lg:px-8 py-32">
+        <div className="flex flex-col gap-12 max-w-prose">
           <Heading size="lg">{movie.title}</Heading>
           <div className="flex gap-4 items-center">
             <Rating

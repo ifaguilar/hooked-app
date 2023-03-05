@@ -1,13 +1,16 @@
 import React from "react";
 
-const MenuItem = ({ text, icon, isActive, onClick = null }) => (
+// Helpers
+import { getIconURL } from "../helpers/getIconURL";
+
+const MenuItem = ({ icon, text, isActive = false, onClick = null }) => (
   <div
     className={`${
       isActive ? "active" : ""
     } flex items-center gap-4 p-4 cursor-pointer hover:bg-neutral-900/5 dark:hover:bg-white/5`}
     onClick={onClick}
   >
-    <img className="icon" src={icon} alt="Icon" />
+    <img className="icon" src={getIconURL(icon)} alt="Icon" />
     <span>{text}</span>
   </div>
 );
