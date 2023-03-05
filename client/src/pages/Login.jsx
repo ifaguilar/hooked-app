@@ -71,6 +71,7 @@ const Login = () => {
       console.error(error.message);
       toast.error(error.message, {
         position: "bottom-right",
+        theme: theme === "dark" ? "dark" : "light",
       });
     }
   };
