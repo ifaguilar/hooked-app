@@ -2,13 +2,14 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 // Components
-import RoundedButton from "./RoundedButton";
-import Logo from "./Logo";
-import Dropdown from "./Dropdown";
+import Avatar from "./Avatar";
 import Button from "./Button";
-import Separator from "./Separator";
+import Dropdown from "./Dropdown";
+import Logo from "./Logo";
 import MenuHeading from "./MenuHeading";
 import MenuItem from "./MenuItem";
+import RoundedButton from "./RoundedButton";
+import Separator from "./Separator";
 
 // Constants
 import { themeOptions } from "../constants/constants";
@@ -29,6 +30,8 @@ const Navbar = ({
 }) => {
   const { theme, setTheme } = useContext(ThemeContext);
   const { isAuthenticated, logout } = useContext(AuthContext);
+
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const handleClick = (menuName = null) => {
     closeAllMenus();
@@ -85,13 +88,24 @@ const Navbar = ({
 
         {isAuthenticated ? (
           <div className="relative">
-            <RoundedButton
-              onClick={() => handleClick("menu")}
-              icon="user"
-              alt="Menu"
-            />
+            <Avatar src={user.avatar} onClick={() => handleClick("menu")} />
 
             <Dropdown isOpen={isMenuOpen}>
+              <Link to="/profile">
+                <div className="flex items-center gap-4 p-4 hover:bg-neutral-900/5 dark:hover:bg-white/5">
+                  <Avatar
+                    src={user.avatar}
+                    onClick={() => handleClick("menu")}
+                  />
+                  <div className="flex flex-col overflow-hidden">
+                    <span className="text-medium">{user.name}</span>
+                    <span className="text-small">{user.email}</span>
+                  </div>
+                </div>
+              </Link>
+
+              <Separator />
+
               <Link to="/favorites">
                 <MenuItem icon={"hearts"} text="Favorites" />
               </Link>

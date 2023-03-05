@@ -75,3 +75,15 @@ label {
 .Toastify__close-button > svg {
   @apply text-neutral-900 dark:text-white;
 }
+
+.text-small {
+  @apply text-sm whitespace-nowrap text-ellipsis overflow-hidden text-neutral-900/80 dark:text-white/80;
+}
+
+.text-medium {
+  @apply font-semibold text-base whitespace-nowrap text-ellipsis overflow-hidden;
+}
+
+.text-large {
+  @apply font-semibold text-lg whitespace-nowrap text-ellipsis overflow-hidden;
+}

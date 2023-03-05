@@ -62,7 +62,7 @@ const Signup = () => {
       const data = await response.json();
 
       if (data.ok) {
-        login(data.token);
+        login(data.token, data.user);
         navigate("/");
       } else {
         throw new Error(data.message);

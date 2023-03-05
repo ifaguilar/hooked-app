@@ -28,6 +28,7 @@ import SearchPage from "./pages/Search";
 import MoviePage from "./pages/Movie";
 import LoginPage from "./pages/Login";
 import SignupPage from "./pages/Signup";
+import ProfilePage from "./pages/Profile";
 import FavoritesPage from "./pages/Favorites";
 import WatchlistPage from "./pages/Watchlist";
 
@@ -59,6 +60,10 @@ const router = createBrowserRouter(
           path: "/search",
           element: <SearchPage />,
           loader: trendingMovies,
+        },
+        {
+          path: "/profile",
+          element: <ProfilePage />,
         },
         {
           path: "/favorites",

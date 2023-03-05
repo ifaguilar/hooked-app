@@ -30,9 +30,17 @@ export const login = async (req, res) => {
     // Create JWT token
     const token = generateJWT(user._id);
 
-    return res
-      .status(200)
-      .json({ ok: true, message: "Logged in successfully.", token: token });
+    return res.status(200).json({
+      ok: true,
+      message: "Logged in successfully.",
+      token: token,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        avatar: user.avatar,
+      },
+    });
   } catch (error) {
     console.error(error.message);
     return res.status(500).json({
@@ -45,7 +53,7 @@ export const login = async (req, res) => {
 export const signup = async (req, res) => {
   try {
     const { name, email, password } = req.body;
-    const userExists = await User.findOne({ email });
+    const userExists = await User.findOne({ email }).select("email");
 
     if (userExists) {
       return res
@@ -67,9 +75,17 @@ export const signup = async (req, res) => {
     // Create JWT token
     const token = generateJWT(user._id);
 
-    return res
-      .status(201)
-      .json({ ok: true, message: "Signed up successfully.", token: token });
+    return res.status(201).json({
+      ok: true,
+      message: "Signed up successfully.",
+      token: token,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        avatar: user.avatar,
+      },
+    });
   } catch (error) {
     console.error(error.message);
     return res.status(500).json({

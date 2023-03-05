@@ -18,18 +18,12 @@ const PersonCard = ({ person }) => (
       )}
     </div>
     <div className="flex flex-col gap-2 p-4">
-      <span
-        className="font-semibold text-lg whitespace-nowrap text-ellipsis overflow-hidden"
-        title={person.name}
-      >
+      <span className="text-large" title={person.name}>
         {person.name}
       </span>
-      <p
-        className="text-sm whitespace-nowrap text-ellipsis overflow-hidden"
-        title={person.character || "Unknow"}
-      >
+      <span className="text-small" title={person.character || "Unknow"}>
         {person.character || "Unknow"}
-      </p>
+      </span>
     </div>
   </div>
 );
