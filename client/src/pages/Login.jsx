@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -25,6 +25,19 @@ const Login = () => {
   const { isAuthenticated, login } = useContext(AuthContext);
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const sessionExpired = location.state?.sessionExpired;
+
+    if (sessionExpired) {
+      toast.error("Your session has expired due to inactivity. Log in again.", {
+        position: "bottom-right",
+        className:
+          "text-neutral-900 dark:text-white bg-white dark:bg-neutral-800",
+      });
+    }
+  }, []);
 
   useEffect(() => {
     switch (theme) {

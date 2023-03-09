@@ -13,18 +13,20 @@ export const login = async (req, res) => {
 
     // Check if user exists
     if (!user) {
-      return res
-        .status(401)
-        .json({ ok: false, message: "Invalid email or password." });
+      return res.status(401).json({
+        ok: false,
+        message: "Invalid email or password.",
+      });
     }
 
     // Verify password
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      return res
-        .status(401)
-        .json({ ok: false, message: "Invalid email or password." });
+      return res.status(401).json({
+        ok: false,
+        message: "Invalid email or password.",
+      });
     }
 
     // Create JWT token
@@ -56,9 +58,10 @@ export const signup = async (req, res) => {
     const userExists = await User.findOne({ email }).select("email");
 
     if (userExists) {
-      return res
-        .status(409)
-        .json({ ok: false, message: "Email is already in use." });
+      return res.status(409).json({
+        ok: false,
+        message: "Email is already in use.",
+      });
     }
 
     // Hash password

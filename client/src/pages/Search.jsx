@@ -89,7 +89,7 @@ const Search = () => {
           )
         ) : (
           <>
-            <Heading>Popular Searches</Heading>
+            <Heading size="md">Popular Searches</Heading>
             <MovieGrid>
               {movies.map((movie) => (
                 <MovieCard key={movie.id} movie={movie} />

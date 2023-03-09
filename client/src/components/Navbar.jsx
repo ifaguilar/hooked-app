@@ -92,11 +92,11 @@ const Navbar = ({
 
             <Dropdown isOpen={isMenuOpen}>
               <Link to="/profile">
-                <div className="flex items-center gap-4 p-4 hover:bg-neutral-900/5 dark:hover:bg-white/5">
-                  <Avatar
-                    src={user.avatar}
-                    onClick={() => handleClick("menu")}
-                  />
+                <div
+                  className="flex items-center gap-4 p-4 hover:bg-neutral-900/5 dark:hover:bg-white/5"
+                  onClick={handleClick}
+                >
+                  <Avatar src={user.avatar} />
                   <div className="flex flex-col overflow-hidden">
                     <span className="text-medium">{user.name}</span>
                     <span className="text-small">{user.email}</span>
@@ -107,10 +107,18 @@ const Navbar = ({
               <Separator />
 
               <Link to="/favorites">
-                <MenuItem icon={"hearts"} text="Favorites" />
+                <MenuItem
+                  icon={"hearts"}
+                  text="Favorites"
+                  onClick={handleClick}
+                />
               </Link>
               <Link to="/watchlist">
-                <MenuItem icon={"bookmark-ribbon--v1"} text="Watchlist" />
+                <MenuItem
+                  icon={"bookmark-ribbon--v1"}
+                  text="Watchlist"
+                  onClick={handleClick}
+                />
               </Link>
 
               <Separator />

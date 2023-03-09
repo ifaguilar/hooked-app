@@ -1,10 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Navigate,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import "./main.css";
 
@@ -20,6 +16,9 @@ import { topRatedMovies } from "./loaders/topRatedMovies";
 import { upcomingMovies } from "./loaders/upcomingMovies";
 import { trendingMovies } from "./loaders/trendingMovies";
 import { movieDetails } from "./loaders/movieDetails";
+import { favoriteList } from "./loaders/favoriteList";
+import { watchlist } from "./loaders/watchlist";
+import { userDetails } from "./loaders/userDetails";
 
 // Pages
 import ErrorPage from "./pages/Error";
@@ -64,14 +63,17 @@ const router = createBrowserRouter(
         {
           path: "/profile",
           element: <ProfilePage />,
+          loader: userDetails,
         },
         {
           path: "/favorites",
           element: <FavoritesPage />,
+          loader: favoriteList,
         },
         {
           path: "/watchlist",
           element: <WatchlistPage />,
+          loader: watchlist,
         },
         {
           path: "/movie/:movieId",

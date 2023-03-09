@@ -8,6 +8,7 @@ import genreRouter from "./src/routes/genre.js";
 import movieRouter from "./src/routes/movie.js";
 import searchRouter from "./src/routes/search.js";
 import trendingRouter from "./src/routes/trending.js";
+import userRouter from "./src/routes/user.js";
 
 import { connectDB } from "./src/database/db.js";
 
@@ -31,5 +32,6 @@ app.use("/api/genre", genreRouter);
 app.use("/api/movie", movieRouter);
 app.use("/api/search", searchRouter);
 app.use("/api/trending", trendingRouter);
+app.use("/api/user", userRouter);
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
