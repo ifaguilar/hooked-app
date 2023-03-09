@@ -115,6 +115,7 @@ const Signup = () => {
                         touched={meta.touched ? meta.touched : false}
                         error={meta.error ? meta.error : ""}
                         type="text"
+                        placeholder="John Doe"
                         {...field}
                       />
                     )}
@@ -136,6 +137,7 @@ const Signup = () => {
                         touched={meta.touched ? meta.touched : false}
                         error={meta.error ? meta.error : ""}
                         type="email"
+                        placeholder="john@example.com"
                         {...field}
                       />
                     )}
@@ -157,6 +159,7 @@ const Signup = () => {
                         touched={meta.touched ? meta.touched : false}
                         error={meta.error ? meta.error : ""}
                         type="password"
+                        placeholder="Enter your password"
                         {...field}
                       />
                     )}
@@ -178,6 +181,7 @@ const Signup = () => {
                         touched={meta.touched ? meta.touched : false}
                         error={meta.error ? meta.error : ""}
                         type="password"
+                        placeholder="Confirm your password"
                         {...field}
                       />
                     )}

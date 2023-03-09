@@ -123,6 +123,7 @@ const Login = () => {
                         touched={meta.touched ? meta.touched : false}
                         error={meta.error ? meta.error : ""}
                         type="email"
+                        placeholder="Enter your email"
                         {...field}
                       />
                     )}
@@ -144,6 +145,7 @@ const Login = () => {
                         touched={meta.touched ? meta.touched : false}
                         error={meta.error ? meta.error : ""}
                         type="password"
+                        placeholder="Enter your password"
                         {...field}
                       />
                     )}
