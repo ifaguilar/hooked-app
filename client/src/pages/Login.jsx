@@ -10,7 +10,7 @@ import Input from "../components/Input";
 import Logo from "../components/Logo";
 
 // Constants
-import { serverBaseURL } from "../constants/constants";
+import { serverBaseURL, websitePerspectiveBg } from "../constants/constants";
 
 // Context
 import { ThemeContext } from "../context/ThemeContext";
@@ -101,9 +101,10 @@ const Login = () => {
   return (
     <div className="relative min-h-screen font-medium text-neutral-900 dark:text-white bg-white dark:bg-neutral-900">
       <div className="absolute inset-0 lg:grid lg:grid-cols-2">
-        <div className="relative hidden lg:block bg-[url('/website-perspective.png')] bg-cover bg-no-repeat bg-center">
-          <div className="absolute inset-0 bg-neutral-900 opacity-50"></div>
-        </div>
+        <div
+          className="hidden lg:block bg-cover bg-no-repeat bg-center"
+          style={{ backgroundImage: `url('${websitePerspectiveBg}')` }}
+        ></div>
         <div className="flex flex-col items-center justify-center gap-16 h-full px-4 lg:px-8">
           <Logo />
           <Formik

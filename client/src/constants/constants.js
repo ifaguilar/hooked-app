@@ -2,6 +2,9 @@ export const serverBaseURL = import.meta.env.VITE_SERVER_BASE_URL;
 
 export const youtubeBaseURL = "https://www.youtube.com/embed/";
 
+export const websitePerspectiveBg =
+  "https://res.cloudinary.com/dz0brhzsu/image/upload/v1678337967/hooked-app/website-perspective.png";
+
 export const imagesBaseURL = "https://image.tmdb.org/t/p";
 
 export const iconsBaseURL = "https://img.icons8.com/fluency-systems-regular";

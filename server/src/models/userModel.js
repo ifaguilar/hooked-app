@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { defaultAvatars } from "../helpers/defaultAvatars.js";
+import { defaultAvatars } from "../constants/defaultAvatars.js";
 import { getRandomItem } from "../utils/getRandomItem.js";
 
 const userSchema = mongoose.Schema(
